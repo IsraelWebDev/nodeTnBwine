@@ -4,14 +4,14 @@ var AppRouter = Backbone.Router.extend({
         ""                  : "home",
         "wines"	: "list",
         "wines/page/:page"	: "list",
-        "wines/add"         : "addWine",
+        //"wines/add"         : "addWine",
         "wines/:id"         : "wineDetails",
         "about"             : "about"
     },
 
     initialize: function () {
         this.headerView = new HeaderView();
-        $('.header').html(this.headerView.el);
+        $('.navbar-wrapper .container').html(this.headerView.el);
     },
 
     home: function (id) {
@@ -28,7 +28,7 @@ var AppRouter = Backbone.Router.extend({
         wineList.fetch({success: function(){
             $("#content").html(new WineListView({model: wineList, page: p}).el);
         }});
-        this.headerView.selectMenuItem('home-menu');
+        this.headerView.selectMenuItem('wines-menu');
     },
 
     wineDetails: function (id) {
@@ -39,11 +39,11 @@ var AppRouter = Backbone.Router.extend({
         this.headerView.selectMenuItem();
     },
 
-	addWine: function() {
+	/*addWine: function() {
         var wine = new Wine();
         $('#content').html(new WineView({model: wine}).el);
         this.headerView.selectMenuItem('add-menu');
-	},
+	},*/
 
     about: function () {
         if (!this.aboutView) {
