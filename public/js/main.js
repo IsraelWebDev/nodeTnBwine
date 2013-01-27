@@ -15,10 +15,17 @@ var AppRouter = Backbone.Router.extend({
     },
 
     home: function (id) {
+        var isNew = false;
         if (!this.homeView) {
             this.homeView = new HomeView();
+            isNew = true;
         }
         $('#content').html(this.homeView.el);
+        //After load
+        if(isNew) {
+            $('#myCarousel').carousel({interval: 7000});
+        }
+
         this.headerView.selectMenuItem('home-menu');
     },
 
