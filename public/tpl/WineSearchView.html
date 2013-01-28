@@ -1,9 +1,12 @@
 <h1>Let's find a wine for you</h1>
 <div class="container">
 	<label for="color-slider">Select a COLOR</label>
-	<div id="color-slider" ></div>
+	<div id="color-slider-container">
+		<div id="color-slider" ></div>
+	</div>
 </div>
 
+<div class="search-results subnav">&nbsp;</div>
 <!--a href="#wines/<%= _id %>" class="thumbnail plain" style="text-align: center;">
     <img src="<%= picture === null ? 'pics/generic.jpg' : 'pics/' + picture %>" height="150" width="125" alt="">
     <h5><%= name %></h5>
