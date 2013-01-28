@@ -16,6 +16,7 @@ window.WineListView = Backbone.View.extend({
             $('.thumbnails', this.el).append(new WineListItemView({model: wines[i]}).render().el);
         }
 
+        $(this.el).prepend(new WineSearchView({model: this.model}).render().el);
         $(this.el).append(new Paginator({model: this.model, page: this.options.page}).render().el);
 
         return this;
