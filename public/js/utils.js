@@ -53,12 +53,12 @@ window.utils = {
     get_color: function (value) {
         //var colors = ['rgb(254,252,234)', 'rgb(241,218,55)', 'rgb(235,80,123)', 'rgb(114,47,55)', 'rgb(53,0,55)', 'rgb(29,0,55)'];
         var rgb;
-        var colors = [{r: 254,g: 252,b: 234},{r:254,g:252,b:234}, {r:241,g:218,b:55}, {r:235,g:80,b:123}, {r:114,g:47,b:55}, {r:53,g:0,b:55}, {r:29,g:0,b:55}];
-        if (value < 20) {rgb = this.gradientlevel(colors[0], colors[1], value, 100)};
-        if (value >= 20 && value < 40) {rgb = this.gradientlevel(colors[1], colors[2], value, 100)};
-        if (value >= 40 && value < 60) {rgb = this.gradientlevel(colors[2], colors[3], value, 100)};
-        if (value >= 60 && value < 80) {rgb = this.gradientlevel(colors[3], colors[4], value, 100)};
-        if (value >= 80) {rgb = this.gradientlevel(colors[4], colors[5], value, 100)};
+        var colors = [{r: 254,g: 252,b: 234}, {r:241,g:218,b:55}, {r:235,g:80,b:123}, {r:114,g:47,b:55}, {r:53,g:0,b:55}, {r:29,g:0,b:55}];
+        if (value < 20) {rgb = this.gradientlevel(colors[0], colors[1], value, 20)};
+        if (value >= 20 && value < 40) {rgb = this.gradientlevel(colors[1], colors[2], value-20, 20)};
+        if (value >= 40 && value < 60) {rgb = this.gradientlevel(colors[2], colors[3], value-40, 20)};
+        if (value >= 60 && value < 80) {rgb = this.gradientlevel(colors[3], colors[4], value-60, 20)};
+        if (value >= 80) {rgb = this.gradientlevel(colors[4], colors[5], value-80, 20)};
         return rgb;
     },
 
