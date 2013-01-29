@@ -397,7 +397,7 @@ legend {
 /* 
     Style jQuery UI's slider in Bootstrap design
     requires jQuery UI
-    https://github.com/logicmd/jquery-bootstrap-slider */
+    https://github.com/logicmd/jquery-bootstrap-slider 
 .ui-slider .ui-slider-range {
     position: absolute; z-index: 1; font-size: .7em; display: block; border: 0; background-position: 0 0;
     color: #ffffff;
@@ -436,7 +436,7 @@ legend {
     text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
 
     color: #333;
-    /*font-size: 13px;*/
+    /*font-size: 13px;*
     line-height: normal;
     border: 1px solid #ccc;
     border-bottom-color: #bbb;
@@ -451,17 +451,21 @@ legend {
     overflow: visible;
 
 }
+*/
+div.ui-slider {
+  width: 250px;
+}
 #color-slider-container {
     padding: 10px;
     width: 300px;
     border-radius: 5px;
 }
-#color-slider-container .ui-input-text  {
+#color-slider-container #color-slider  {
     display: none;
 }
-#color-slider {
-    width: 250px;
+#color-slider-container .ui-slider {
     margin: 15px;
+    height: 20px;
 
     background: rgb(254,252,234); /* Old browsers */
     /* IE9 SVG, needs conditional override of 'filter' to 'none' */
@@ -489,18 +493,18 @@ legend {
 }
 #price-slider-container label{
     position: absolute;
-    top: -30px;
+    top: -35px;
     left: 10px;
 }                            /* moves label field */
 #price-slider-container #price_slider_min{
     top: -40px;
     position: absolute;
-    left: 100px;
+    left: 250px;
 }       /* moves first input field */ 
 #price-slider-container #price_slider_max{
     top: -40px;
     position: absolute;
-    left: 170px;
+    left: 350px;
 }      /* move second input field */ 
 #price-slider-container div.ui-slider{
     position: absolute;

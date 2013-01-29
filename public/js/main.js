@@ -36,32 +36,24 @@ var AppRouter = Backbone.Router.extend({
             $("#content").html(new WineListView({model: wineList, page: p}).el);
 
             var wine = new Wine();
+            wine.set("price","0-200");
             $( "#color-slider" ).val(wine.get("color"));
-            $( "#color-slider" ).slider({
-                /*orientation: "horizontal",
-                min: 0,
-                max: 100,
-                animate: "slow",
-                value: wine.get("color"),
-                slide: function (event, ui) {
-                    console.log(ui.value);
-                    if (rgb=utils.get_color(ui.value)) {
-                        $("#color-slider-container").css("background-color", "rgb("+rgb["r"]+","+rgb["g"]+","+rgb["b"]+")");
-                    };
-
-                }*/
-            });
+            $( "#color-slider" ).slider();
             $( "#color-slider" ).bind( "change", function(event, ui) {
-                    console.log(ui.value);
-                    if (rgb=utils.get_color(ui.value)) {
+                    console.log($(this).val());
+                    if (rgb=utils.get_color($(this).val())) {
                         $("#color-slider-container").css("background-color", "rgb("+rgb["r"]+","+rgb["g"]+","+rgb["b"]+")");
                     };
-            });
+            }).trigger("change");
             $( "#color-slider" ).on( 'slidestop', function( event ) {
                 console.log($(this).val());
                 console.log('stopped');
             });
 
+            $('#price_slider_min').val(wine.get('price').split("-")[0]);
+            $('#price_slider_min').slider();
+            $('#price_slider_max').val(wine.get('price').split("-")[1]);
+            $('#price_slider_max').slider();
             $('#price_slider_min').change(function() {
                 var min = parseInt($(this).val());
                 var max = parseInt($('#price_slider_max').val());
@@ -83,11 +75,18 @@ var AppRouter = Backbone.Router.extend({
             $('#food_input')
                 .textext({
                     plugins : 'autocomplete arrow tags ajax prompt',
-                    prompt: "start typing..."
+                    prompt: "start typing...",
                     ajax : {
                         url : '/ajax/foods.json',
                         dataType : 'json',
-                        cacheResults : true
+                    },
+                    ext : {
+                        itemManager: {
+                            itemContains : function(item, needle)
+                            {
+                                return $.fn.textext.ItemManager.prototype.itemToString(item).toLowerCase().indexOf(needle.toLowerCase()) >= 0;
+                            }
+                        }
                     }
                 })
             ;

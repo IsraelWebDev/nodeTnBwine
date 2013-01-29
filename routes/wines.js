@@ -88,11 +88,11 @@ exports.deleteWine = function(req, res) {
 };
 
 exports.ajaxFoods = function(req, res) {
-    var q = req.params.q;
+    var q = req.query.q;
     console.log('Retrieving foods: ' + q);
     db.collection('foods', function(err, collection) {
-        collection.find({'_id':{ $regex: q, $options: 'i' }}, function(err, item) {
-            res.send(_.pluck(item, '_id'));
+        collection.find({'_id':{ $regex: q, $options: 'i' }}).toArray(function(err, items) {
+            res.send(_.pluck(items, '_id'));
         });
     });
 };

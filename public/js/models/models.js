@@ -13,14 +13,14 @@ window.Wine = Backbone.Model.extend({
         year: "",
         description: "",
         picture: null,
-        color: 50,
+        color: 75,
         price: "",
         country: "",
         region: "",
         foods: [],
         tags: [],
         descriptor_objects: [], //grab value using _.where(descriptor_objects, {name: "Acid"}); Format {name: "Acid", value: "Medium"}
-    }
+    },
 
     initialize: function () {
         this.validators = {};
