@@ -452,6 +452,15 @@ legend {
 
 }
 */
+.center_fixed {
+  margin: 0 auto;
+  max-width: 800px;  
+}
+#WineSearchView>div {
+  margin: 0 auto;
+  max-width: 800px;  
+}
+
 div.ui-slider {
   width: 250px;
 }
@@ -487,29 +496,39 @@ div.ui-slider {
 
 /* Price Slider */
 #price-slider-container{
-    position: relative;
+    /*position: relative;
     height: 30px;
-    margin-top: 60px;
+    margin-top: 60px;*/
 }
 #price-slider-container label{
-    position: absolute;
+    /*position: absolute;
     top: -35px;
-    left: 10px;
+    left: 10px;*/
 }                            /* moves label field */
+#price-slider-container .pull-right {
+  position:relative;
+  max-width: 320px;
+  height: 100px;
+}
 #price-slider-container #price_slider_min{
-    top: -40px;
-    position: absolute;
-    left: 250px;
-}       /* moves first input field */ 
-#price-slider-container #price_slider_max{
-    top: -40px;
-    position: absolute;
-    left: 350px;
-}      /* move second input field */ 
-#price-slider-container div.ui-slider{
-    position: absolute;
-}                   /* move both sliders - adressing 1st slider with CSS is hard */ 
-#price-slider-container div:last-child{
+    /*top: -40px;*/
     position: absolute;
     left: 0px;
+}       /* moves first input field */ 
+#price-slider-container #price_slider_max{
+    /*top: -40px;*/
+    position: absolute;
+    left: 200px;
+}      /* move second input field */ 
+#price-slider-container div.ui-slider{
+    /*position: absolute;*/
+}                   /* move both sliders - adressing 1st slider with CSS is hard */ 
+#price-slider-container .pull-right div:last-child{
+    position: relative;
+    left: 0px;
+    top: 60px;
+}
+#food-container .pull-right {
+  width: 250px;
+  margin-top: 20px;
 }

@@ -1,20 +1,24 @@
-<div id="indexPage" data-role="page">
+<div id="WineSearchView" data-role="page">
 	<h1>Let's find a wine for you</h1>
-	<div class="container">
-		<label for="color-slider"><h4>Select a COLOR</h4></label>
-		<div id="color-slider-container">
+	<div class="container clearfix">
+		<label for="color-slider" class="pull-left"><h4>Select a COLOR</h4></label>
+		<div id="color-slider-container" class="pull-right">
 			<!--div id="color-slider" ></div-->
 			<input name="color-slider" id="color-slider" value="<%= color %>" min="0" max="99" />
 		</div>
 	</div>
-	<div id="price-slider-container" class="container">
-		<label for="price-slider"><h4>Select a PRICE RANGE</h4></label>
-		<input type="number" name="price_slider_min" id="price_slider_min" class="minpriceSlider" value="<%= price.split("-")[0] %>" min="0" max="200" />
-	    <input type="number" name="price_slider_max" id="price_slider_max" class="maxpriceSlider" value="<%= price.split("-")[1] %>" min="0" max="200" data-track-theme="b"/>
+	<div id="price-slider-container" class="container clearfix">
+		<label for="price-slider" class="pull-left"><h4>Select a PRICE RANGE</h4></label>
+		<div class="pull-right">
+			<input type="number" name="price_slider_min" id="price_slider_min" class="minpriceSlider" value="<%= price.split("-")[0] %>" min="0" max="200" />
+		    <input type="number" name="price_slider_max" id="price_slider_max" class="maxpriceSlider" value="<%= price.split("-")[1] %>" min="0" max="200" data-track-theme="b"/>
+		</div>
 	</div>
-	<div id="food-container" class="container">
-		<label for="food_input"><h4>Select a FOOD MATCH</h4></label>
-		<textarea id="food_input" class="bs_textext" rows="1"></textarea>
+	<div id="food-container" class="container clearfix">
+		<label for="food_input" class="pull-left"><h4>Select a FOOD MATCH</h4></label>
+		<div class="pull-right">
+			<textarea id="food_input" class="bs_textext" rows="1"></textarea>
+		</div>
 	</div>
 
 
