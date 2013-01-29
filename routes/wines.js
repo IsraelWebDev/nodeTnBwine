@@ -1,3 +1,4 @@
+var _ = require('underscore');
 var mongo = require('mongodb');
 
 var Server = mongo.Server,
@@ -84,7 +85,17 @@ exports.deleteWine = function(req, res) {
             }
         });
     });
-}
+};
+
+exports.ajaxFoods = function(req, res) {
+    var q = req.params.q;
+    console.log('Retrieving foods: ' + q);
+    db.collection('foods', function(err, collection) {
+        collection.find({'_id':{ $regex: q, $options: 'i' }}, function(err, item) {
+            res.send(_.pluck(item, '_id'));
+        });
+    });
+};
 
 /*--------------------------------------------------------------------------------------------------------------------*/
 // Populate database with sample data -- Only used once: the first time the application is started.

@@ -4,6 +4,24 @@ window.Wine = Backbone.Model.extend({
 
     idAttribute: "_id",
 
+    defaults: {
+        _id: null,
+        name: "",
+        grapes: "",
+        country: "USA",
+        region: "California",
+        year: "",
+        description: "",
+        picture: null,
+        color: 50,
+        price: "",
+        country: "",
+        region: "",
+        foods: [],
+        tags: [],
+        descriptor_objects: [], //grab value using _.where(descriptor_objects, {name: "Acid"}); Format {name: "Acid", value: "Medium"}
+    }
+
     initialize: function () {
         this.validators = {};
 
@@ -40,18 +58,6 @@ window.Wine = Backbone.Model.extend({
 
         return _.size(messages) > 0 ? {isValid: false, messages: messages} : {isValid: true};
     },
-
-    defaults: {
-        _id: null,
-        name: "",
-        grapes: "",
-        country: "USA",
-        region: "California",
-        year: "",
-        description: "",
-        picture: null,
-        color: 50
-    }
 });
 
 window.WineCollection = Backbone.Collection.extend({

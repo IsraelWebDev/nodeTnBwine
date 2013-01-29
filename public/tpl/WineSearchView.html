@@ -1,10 +1,21 @@
 <h1>Let's find a wine for you</h1>
 <div class="container">
-	<label for="color-slider">Select a COLOR</label>
+	<label for="color-slider"><h4>Select a COLOR</h4></label>
 	<div id="color-slider-container">
-		<div id="color-slider" ></div>
+		<!--div id="color-slider" ></div-->
+		<input type="range" name="color-slider" id="color-slider" value="<%= color %>" min="0" max="99" />
 	</div>
 </div>
+<div id="price-slider-container" class="container">
+	<label for="price-slider"><h4>Select a PRICE RANGE</h4></label>
+	<input type="range" name="price_slider_min" id="price_slider_min" class="minpriceSlider" value="<%= price.split("-")[0] %>" min="0" max="200" />
+    <input type="range" name="price_slider_max" id="price_slider_max" class="maxpriceSlider" value="<%= price.split("-")[0] %>" min="0" max="200" data-track-theme="b"/>
+</div>
+<div id="food-container" class="container">
+	<label for="food_input"><h4>Select a FOOD MATCH</h4></label>
+	<textarea id="food_input" class="bs_textext" rows="1"></textarea>
+</div>
+
 
 <div class="search-results subnav">&nbsp;</div>
 <!--a href="#wines/<%= _id %>" class="thumbnail plain" style="text-align: center;">

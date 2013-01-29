@@ -453,12 +453,14 @@ legend {
 }
 #color-slider-container {
     padding: 10px;
-    width: 350px;
+    width: 300px;
     border-radius: 5px;
 }
-
+#color-slider-container .ui-input-text  {
+    display: none;
+}
 #color-slider {
-    width: 300px;
+    width: 250px;
     margin: 15px;
 
     background: rgb(254,252,234); /* Old browsers */
@@ -477,4 +479,33 @@ legend {
         rgb(53,0,55) 80%,
         rgb(29,0,55) 100%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefcea', endColorstr='#1d0037',GradientType=1 ); /* IE6-8 */
+}
+
+/* Price Slider */
+#price-slider-container{
+    position: relative;
+    height: 30px;
+    margin-top: 60px;
+}
+#price-slider-container label{
+    position: absolute;
+    top: -30px;
+    left: 10px;
+}                            /* moves label field */
+#price-slider-container #price_slider_min{
+    top: -40px;
+    position: absolute;
+    left: 100px;
+}       /* moves first input field */ 
+#price-slider-container #price_slider_max{
+    top: -40px;
+    position: absolute;
+    left: 170px;
+}      /* move second input field */ 
+#price-slider-container div.ui-slider{
+    position: absolute;
+}                   /* move both sliders - adressing 1st slider with CSS is hard */ 
+#price-slider-container div:last-child{
+    position: absolute;
+    left: 0px;
 }

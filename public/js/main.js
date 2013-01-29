@@ -35,20 +35,62 @@ var AppRouter = Backbone.Router.extend({
         wineList.fetch({success: function(){
             $("#content").html(new WineListView({model: wineList, page: p}).el);
 
+            var wine = new Wine();
+            $( "#color-slider" ).val(wine.get("color"));
             $( "#color-slider" ).slider({
-                orientation: "horizontal",
+                /*orientation: "horizontal",
                 min: 0,
                 max: 100,
                 animate: "slow",
-                //value: this.model.get("color"),
+                value: wine.get("color"),
                 slide: function (event, ui) {
                     console.log(ui.value);
                     if (rgb=utils.get_color(ui.value)) {
                         $("#color-slider-container").css("background-color", "rgb("+rgb["r"]+","+rgb["g"]+","+rgb["b"]+")");
                     };
 
+                }*/
+            });
+            $( "#color-slider" ).bind( "change", function(event, ui) {
+                    console.log(ui.value);
+                    if (rgb=utils.get_color(ui.value)) {
+                        $("#color-slider-container").css("background-color", "rgb("+rgb["r"]+","+rgb["g"]+","+rgb["b"]+")");
+                    };
+            });
+            $( "#color-slider" ).on( 'slidestop', function( event ) {
+                console.log($(this).val());
+                console.log('stopped');
+            });
+
+            $('#price_slider_min').change(function() {
+                var min = parseInt($(this).val());
+                var max = parseInt($('#price_slider_max').val());
+                if (min > max) {
+                    $(this).val(max);
+                    $(this).slider('refresh');
                 }
             });
+            $('#price_slider_max').change(function() {
+                var min = parseInt($('#price_slider_min').val());
+                var max = parseInt($(this).val());
+
+                if (min > max) {
+                    $(this).val(min);
+                    $(this).slider('refresh');
+                }
+            });
+
+            $('#food_input')
+                .textext({
+                    plugins : 'autocomplete arrow tags ajax prompt',
+                    prompt: "start typing..."
+                    ajax : {
+                        url : '/ajax/foods.json',
+                        dataType : 'json',
+                        cacheResults : true
+                    }
+                })
+            ;
         }});
         this.headerView.selectMenuItem('wines-menu');
     },
