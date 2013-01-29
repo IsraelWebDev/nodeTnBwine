@@ -457,8 +457,10 @@ legend {
   max-width: 800px;  
 }
 #WineSearchView>div {
-  margin: 0 auto;
+  margin: 20px auto;
   max-width: 800px;  
+  border-bottom: 1px solid #b0b0b0;
+  padding-bottom: 10px;
 }
 
 div.ui-slider {
@@ -521,7 +523,8 @@ div.ui-slider {
     left: 200px;
 }      /* move second input field */ 
 #price-slider-container div.ui-slider{
-    /*position: absolute;*/
+    position: absolute;
+    top: 60px;
 }                   /* move both sliders - adressing 1st slider with CSS is hard */ 
 #price-slider-container .pull-right div:last-child{
     position: relative;
