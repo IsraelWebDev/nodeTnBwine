@@ -87,10 +87,40 @@ exports.deleteWine = function(req, res) {
     });
 };
 
+exports.searchWine = function(req, res) {
+    // POST user[name]=tobi&user[email]=tobi@learnboost.com
+    //req.body.user.name
+    // => "tobi"
+    db.collection('wines', function(err, collection) {
+        collection.find().toArray(function(err, items) {
+            res.send(items);
+        });
+    });
+};
+
+
 exports.ajaxFoods = function(req, res) {
-    var q = req.query.q;
+    var q = req.query.q || '';
     console.log('Retrieving foods: ' + q);
     db.collection('foods', function(err, collection) {
+        collection.find(/*{'_id':{ $regex: q, $options: 'i' }}*/).toArray(function(err, items) {
+            res.send(_.pluck(items, '_id'));
+        });
+    });
+};
+exports.ajaxGrapes = function(req, res) {
+    var q = req.query.q || '';
+    console.log('Retrieving grapes: ' + q);
+    db.collection('grapes', function(err, collection) {
+        collection.find(/*{'_id':{ $regex: q, $options: 'i' }}*/).toArray(function(err, items) {
+            res.send(_.pluck(items, '_id'));
+        });
+    });
+};
+exports.ajaxTags = function(req, res) {
+    var q = req.query.q || '';
+    console.log('Retrieving descriptors: ' + q);
+    db.collection('descriptors', function(err, collection) {
         collection.find({'_id':{ $regex: q, $options: 'i' }}).toArray(function(err, items) {
             res.send(_.pluck(items, '_id'));
         });

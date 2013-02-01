@@ -14,12 +14,101 @@
 		    <input type="number" name="price_slider_max" id="price_slider_max" class="maxpriceSlider" value="<%= price.split("-")[1] %>" min="0" max="200" data-track-theme="b"/>
 		</div>
 	</div>
-	<div id="food-container" class="container clearfix">
+	<div id="food-container" class="textext_container container clearfix">
 		<label for="food_input" class="pull-left"><h4>Select a FOOD MATCH</h4></label>
 		<div class="pull-right">
 			<textarea id="food_input" class="bs_textext" rows="1"></textarea>
 		</div>
 	</div>
+	<div id="grape-container" class="textext_container container clearfix">
+		<label for="grape_input" class="pull-left"><h4>Select a GRAPE TYPE</h4></label>
+		<div class="pull-right">
+			<textarea id="grape_input" class="bs_textext" rows="1"></textarea>
+		</div>
+	</div>
+	<div id="keyword-container" class="textext_container container clearfix">
+		<label for="keyword_input" class="pull-left"><h4>Select a KEYWORD</h4></label>
+		<div class="pull-right">
+			<textarea id="keyword_input" class="bs_textext" rows="1"></textarea>
+		</div>
+	</div>
+	<div class="accordion advanced_container clearfix" id="accordion2">
+		<div class="accordion-group">
+			<div class="accordion-heading">
+				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+					<h4>Advanced Filter</h4>
+				</a>
+			</div>
+			<div id="collapseOne" class="accordion-body collapse in">
+				<div class="accordion-inner">
+					<div class="adv_slider_container">
+						<label for="acid-slider" class="pull-left"><h4>ACID</h4></label>
+						<div id="acid-slider-container" class="pull-right">
+							<input name="acid-slider" id="acid-slider" value="" min="1" max="5" data-highlight="true" />
+						</div>
+					</div>
+
+					<div class="adv_slider_container">
+						<label for="tannin-slider" class="pull-left"><h4>TANNIN</h4></label>
+						<div id="tannin-slider-container" class="pull-right">
+							<input name="tannin-slider" id="tannin-slider" value="" min="1" max="5" data-highlight="true" />
+						</div>
+					</div>
+
+					<div class="adv_slider_container">
+						<label for="sweet-slider" class="pull-left"><h4>PERCEIVED SWEETNESS</h4></label>
+						<div id="sweet-slider-container" class="pull-right">
+							<input name="sweet-slider" id="sweet-slider" value="" min="1" max="5" data-highlight="true" />
+						</div>
+					</div>
+
+					<div class="adv_slider_container">
+						<label for="oak-slider" class="pull-left"><h4>OAK</h4></label>
+						<div id="oak-slider-container" class="pull-right">
+							<input name="oak-slider" id="oak-slider" value="" min="1" max="5" data-highlight="true" />
+						</div>
+					</div>
+
+					<div class="adv_slider_container">
+						<label for="spicy-slider" class="pull-left"><h4>SPICY FLAVORS</h4></label>
+						<div id="spicy-slider-container" class="pull-right">
+							<input name="spicy-slider" id="spicy-slider" value="" min="1" max="5" data-highlight="true" />
+						</div>
+					</div>
+
+					<div class="adv_slider_container">
+						<label for="savory-slider" class="pull-left"><h4>SAVORY FLAVORS</h4></label>
+						<div id="savory-slider-container" class="pull-right">
+							<input name="savory-slider" id="savory-slider" value="" min="1" max="5" data-highlight="true" />
+						</div>
+					</div>
+
+					<div class="adv_slider_container">
+						<label for="fruity-slider" class="pull-left"><h4>FRUITY FLAVORS</h4></label>
+						<div id="fruity-slider-container" class="pull-right">
+							<input name="fruity-slider" id="fruity-slider" value="" min="1" max="5" data-highlight="true" />
+						</div>
+					</div>
+
+					<div class="adv_slider_container">
+						<label for="intensity-slider" class="pull-left"><h4>INTENSITY OF FLAVORS</h4></label>
+						<div id="intensity-slider-container" class="pull-right">
+							<input name="intensity-slider" id="intensity-slider" value="" min="1" max="5" data-highlight="true" />
+						</div>
+					</div>
+
+					<div class="adv_slider_container">
+						<label for="weight-slider" class="pull-left"><h4>WEIGHT IN MOUTH</h4></label>
+						<div id="weight-slider-container" class="pull-right">
+							<input name="weight-slider" id="weight-slider" value="" min="1" max="5" data-highlight="true" />
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
 
 
 	<div class="search-results subnav">&nbsp;</div>

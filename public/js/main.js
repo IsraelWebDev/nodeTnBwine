@@ -34,14 +34,16 @@ var AppRouter = Backbone.Router.extend({
         var wineList = new WineCollection();
         wineList.fetch({success: function(){
             $("#content").html(new WineListView({model: wineList, page: p}).el);
+        }});
 
+        //fetch last search
             var wine = new Wine();
             wine.set("price","0-200");
             $( "#color-slider" ).val(wine.get("color"));
             $( "#color-slider" ).slider();
             $( "#color-slider" ).bind( "change", function(event, ui) {
                     console.log($(this).val());
-                    if (rgb=utils.get_color($(this).val())) {
+                    if (rgb=utils.getColor($(this).val())) {
                         $("#color-slider-container").css("background-color", "rgb("+rgb["r"]+","+rgb["g"]+","+rgb["b"]+")");
                     };
             }).trigger("change");
@@ -72,25 +74,91 @@ var AppRouter = Backbone.Router.extend({
                 }
             });
 
-            $('#food_input')
-                .textext({
-                    plugins : 'autocomplete arrow tags ajax prompt',
-                    prompt: "start typing...",
-                    ajax : {
-                        url : '/ajax/foods.json',
-                        dataType : 'json',
-                    },
-                    ext : {
-                        itemManager: {
-                            itemContains : function(item, needle)
-                            {
-                                return $.fn.textext.ItemManager.prototype.itemToString(item).toLowerCase().indexOf(needle.toLowerCase()) >= 0;
-                            }
-                        }
+            $('#food_input').textext({
+                plugins : 'autocomplete arrow tags ajax prompt',
+                prompt: "start typing...",
+                tagsItems : wine.get('foods'),
+                ajax : {
+                    url : '/ajax/foods.json',
+                    dataType : 'json',
+                    cacheResults : true,
+                },
+                ext : {
+                    itemManager: {
+                        itemContains: utils.itemContainsAnywhere /*function(item, needle)
+                        {
+                            return $.fn.textext.ItemManager.prototype.itemToString(item).toLowerCase().indexOf(needle.toLowerCase()) >= 0;
+                        }*/
                     }
-                })
-            ;
-        }});
+                }
+            });
+            $('#grape_input').textext({
+                plugins : 'autocomplete arrow tags ajax prompt',
+                prompt: "start typing...",
+                tagsItems : wine.get('grapes') instanceof Array ? wine.get('grapes') : wine.get('grapes').split(','),
+                ajax : {
+                    url : '/ajax/grapes.json',
+                    dataType : 'json',
+                    cacheResults : true,
+                },
+                ext : {
+                    itemManager: {
+                        itemContains : utils.itemContainsAnywhere                     }
+                }
+            });
+            $('#country_input').textext({
+                plugins : 'autocomplete suggestions arrow tags prompt',
+                prompt: "start typing...",
+                tagsItems : wine.get('country') instanceof Array ? wine.get('country') : wine.get('country').split(','),
+                suggestions: utils.getCountries(),
+                ext : {
+                    itemManager: {
+                        itemContains : utils.itemContainsAnywhere                     }
+                }
+            });
+            $('#keyword_input').textext({
+                plugins : 'autocomplete tags ajax prompt',
+                prompt: "start typing...",
+                tagsItems : wine.get('tags'),
+                ajax : {
+                    url : '/ajax/tags.json',
+                    dataType : 'json',
+                },
+                ext : {
+                    itemManager: {
+                        itemContains : utils.itemContainsAnywhere                     }
+                }
+            });
+
+            $( "#acid-slider" ).val(_.where(wine.get("descriptor_objects"), {name: "acid"}));
+            $( "#acid-slider" ).slider();
+
+            $( "#tannin-slider" ).val(_.where(wine.get("descriptor_objects"), {name: "tannin"}));
+            $( "#tannin-slider" ).slider();
+
+            $( "#sweet-slider" ).val(_.where(wine.get("descriptor_objects"), {name: "sweet"}));
+            $( "#sweet-slider" ).slider();
+
+            $( "#oak-slider" ).val(_.where(wine.get("descriptor_objects"), {name: "oak"}));
+            $( "#oak-slider" ).slider();
+
+            $( "#spicy-slider" ).val(_.where(wine.get("descriptor_objects"), {name: "spicy"}));
+            $( "#spicy-slider" ).slider();
+
+            $( "#savory-slider" ).val(_.where(wine.get("descriptor_objects"), {name: "savory"}));
+            $( "#savory-slider" ).slider();
+
+            $( "#fruity-slider" ).val(_.where(wine.get("descriptor_objects"), {name: "fruity"}));
+            $( "#fruity-slider" ).slider();
+
+            $( "#intensity-slider" ).val(_.where(wine.get("descriptor_objects"), {name: "intensity"}));
+            $( "#intensity-slider" ).slider();
+
+            $( "#weight-slider" ).val(_.where(wine.get("descriptor_objects"), {name: "weight"}));
+            $( "#weight-slider" ).slider();
+
+        //}});
+
         this.headerView.selectMenuItem('wines-menu');
     },
 

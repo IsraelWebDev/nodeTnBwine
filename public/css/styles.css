@@ -531,7 +531,10 @@ div.ui-slider {
     left: 0px;
     top: 60px;
 }
-#food-container .pull-right {
+.textext_container .pull-right {
   width: 250px;
   margin-top: 20px;
+}
+.textext_container input, .textext_container textarea{
+  width: 300px;
 }
