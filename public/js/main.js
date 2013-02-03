@@ -34,9 +34,8 @@ var AppRouter = Backbone.Router.extend({
         var wineList = new WineCollection();
         wineList.fetch({success: function(){
             $("#content").html(new WineListView({model: wineList, page: p}).el);
-        }});
 
-        //fetch last search
+            //fetch last search
             var wine = new Wine();
             wine.set("price","0-200");
             $( "#color-slider" ).val(wine.get("color"));
@@ -157,7 +156,7 @@ var AppRouter = Backbone.Router.extend({
             $( "#weight-slider" ).val(_.where(wine.get("descriptor_objects"), {name: "weight"}));
             $( "#weight-slider" ).slider();
 
-        //}});
+        }});
 
         this.headerView.selectMenuItem('wines-menu');
     },
